@@ -40,7 +40,8 @@ class BestFit(Heuristic):
         :return: The list of bins after the insertion.
         """
         valid_bins = (b for b in bins if b.can_add_item(item))
-        sorted_bins = sorted(valid_bins, key=lambda x: x.filled_space())
+        # Note that this method is exactly the same as for the BestFit heuristic except for the following line.
+        sorted_bins = sorted(valid_bins, key=lambda x: x.filled_space(), reverse=True)
         if sorted_bins:
             b = sorted_bins[0]
         else:
@@ -77,8 +78,7 @@ class WorstFit(Heuristic):
         :return: The list of bins after insertion.
         """
         valid_bins = (b for b in bins if b.can_add_item(item))
-        # Note that this method is exactly the same as for the BestFit heuristic except for the following line.
-        sorted_bins = sorted(valid_bins, key=lambda x: x.filled_space(), reverse=True)
+        sorted_bins = sorted(valid_bins, key=lambda x: x.filled_space())
         if sorted_bins:
             b = sorted_bins[0]
         else:
