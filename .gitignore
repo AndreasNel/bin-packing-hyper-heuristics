@@ -1,3 +1,10 @@
+# Jetbrains things
+.idea/
+
+# Assignment Specific files
+*.pdf
+results*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
