@@ -45,7 +45,7 @@ if __name__ == '__main__':
             thing = TabuSearch(capacity, items)
 
             start_time = datetime.now()
-            thing.run()
+            total_iterations, stagnation, combination = thing.run()
             execution_time = datetime.now() - start_time
 
             # Record the relevant data for analysis
@@ -53,8 +53,12 @@ if __name__ == '__main__':
                 "execution_time": str(execution_time),
                 "num_bins": len(thing.bins),
                 "fitness": sum(b.fitness() for b in thing.bins) / len(thing.bins),
+                "iterations": total_iterations,
+                "stagnation": stagnation,
+                "combination": combination,
+                "tabu_list": list(thing.tabu_list)
             }
             dataset["results"].setdefault("TabuSearch", []).append(summary)
     # Write the captured data to disk.
-    with open("results_low_level.json", "w") as file:
+    with open("results_tabu_search.json", "w") as file:
         file.write(json.dumps(datasets, indent=2))

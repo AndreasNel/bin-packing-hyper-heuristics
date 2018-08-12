@@ -25,7 +25,7 @@ class Remove(MoveOperator):
         """
         num_removals = random.randrange(len(items))
         for _ in range(num_removals):
-            to_remove = random.randint(0, len(items) - 1)
+            to_remove = random.randrange(len(items))
             items = items[:to_remove] + items[to_remove + 1:]
         return items
 
@@ -41,7 +41,7 @@ class Add(MoveOperator):
         """
         num_inserts = random.randrange(len(items) + 1)
         for _ in range(num_inserts):
-            to_insert = random.randint(0, len(items))
+            to_insert = random.randrange(len(items))
             items = items[:to_insert] + random.choice(choices) + items[to_insert:]
         return items
 
@@ -58,7 +58,7 @@ class Change(MoveOperator):
         num_changes = random.randrange(len(items)+1)
         items = list(items)
         for _ in range(num_changes):
-            to_change = random.randint(0, len(items))
+            to_change = random.randrange(len(items))
             items[to_change] = random.choice(choices)
         return "".join(items)
 
