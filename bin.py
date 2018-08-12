@@ -35,3 +35,10 @@ class Bin:
         :return: The amount of space that this bin has left.
         """
         return self.capacity - self.filled_space()
+
+    def fitness(self):
+        """
+        Returns a value that can be used to indicate the fitness of this bin when calculating the fitness of a solution.
+        :return: (fullness / capacity) ^ 2
+        """
+        return (self.filled_space() / self.capacity) ** 2

@@ -56,7 +56,7 @@ if __name__ == '__main__':
                 summary = {
                     "execution_time": str(execution_time),
                     "num_bins": len(bins),
-                    "avg_fullness": (sum((b.filled_space() for b in bins)) / len(bins)) / capacity * 100,
+                    "fitness": sum(b.fitness() for b in bins) / len(bins),
                 }
                 dataset["results"].setdefault(h.__name__, []).append(summary)
     # Write the captured data to disk.
